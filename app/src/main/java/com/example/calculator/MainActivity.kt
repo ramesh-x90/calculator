@@ -78,14 +78,17 @@ class MainActivity : AppCompatActivity() {
 
                     "=" -> calculate()
 
-                    "C" -> backSpace()
-
-                    else->{
+                    else -> {
                         State.updateInfixExpression(text)
                         State.calculate()
                         updateScreen()
                     }
 
+
+                }
+
+                if(view.id == R.id.button || view.id == R.id.button19){
+                    backSpace()
 
                 }
             }
