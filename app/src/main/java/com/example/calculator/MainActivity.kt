@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialize()
     {
-        inFixText = findViewById<TextView>(R.id.infixExpression)
-        resText = findViewById<TextView>(R.id.res)
+        inFixText = findViewById(R.id.infixExpression)
+        resText = findViewById(R.id.res)
 
         updateScreen()
     }
