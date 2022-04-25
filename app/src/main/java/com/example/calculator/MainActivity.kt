@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    fun onEvent(view: View)
+    private fun onEvent(view: View)
     {
         when(view)
         {
