@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.allViews
 import com.example.calculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +29,12 @@ class MainActivity : AppCompatActivity() {
     {
         inFixText = viewBinding.infixExpression
         resText = viewBinding.res
+
+        viewBinding.root.allViews.forEach { it ->
+            it.setOnClickListener {
+                onEvent(it)
+            }
+        }
 
         updateScreen()
     }
