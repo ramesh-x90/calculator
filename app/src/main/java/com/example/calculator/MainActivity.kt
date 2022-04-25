@@ -1,17 +1,17 @@
 package com.example.calculator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.allViews
 import com.example.calculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var inFixText : TextView
-    private lateinit var resText : TextView
+    private lateinit var inFixText: TextView
+    private lateinit var resText: TextView
     private lateinit var viewBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,15 +24,16 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-    private fun initialize()
-    {
+    private fun initialize() {
         inFixText = viewBinding.infixExpression
         resText = viewBinding.res
 
         viewBinding.root.allViews.forEach { it ->
-            it.setOnClickListener {
-                onEvent(it)
+            if (it is Button) {
+                it.setOnClickListener {
+                    onEvent(it)
+                }
+
             }
         }
 
@@ -40,28 +41,20 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-    private fun updateScreen()
-    {
+    private fun updateScreen() {
         inFixText.text = State.getInfixExpression()
         resText.text = State.getResult()
 
     }
 
 
-
-    private fun clearScreen()
-    {
+    private fun clearScreen() {
         State.clearState()
         updateScreen()
     }
 
 
-
-
-    private fun calculate()
-    {
+    private fun calculate() {
         State.calculate()
         updateScreen()
     }
@@ -75,14 +68,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-    private fun onEvent(view: View)
-    {
-        when(view)
-        {
+    private fun onEvent(view: View) {
+        when (view) {
             is Button -> {
-                when(val text = view.text as String) {
+                when (val text = view.text as String) {
 
                     "CE" -> clearScreen()
 
@@ -97,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-                if(view.id == R.id.button || view.id == R.id.button19){
+                if (view.id == R.id.button || view.id == R.id.button19) {
                     backSpace()
 
                 }
