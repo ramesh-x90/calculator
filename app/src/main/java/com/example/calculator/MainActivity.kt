@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         viewBinding.root.allViews.forEach { it ->
             if (it is Button) {
                 it.setOnClickListener {
-                    onEvent(it)
+                    btnEvent(it as Button)
                 }
 
             }
@@ -68,30 +68,25 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun onEvent(view: View) {
-        when (view) {
-            is Button -> {
-                when (val text = view.text as String) {
+    private fun btnEvent(view: Button) {
+        when (val text = view.text as String) {
 
-                    "CE" -> clearScreen()
+            "CE" -> clearScreen()
 
-                    "=" -> calculate()
+            "=" -> calculate()
 
-                    else -> {
-                        State.updateInfixExpression(text)
-                        State.calculate()
-                        updateScreen()
-                    }
-
-
-                }
-
-                if (view.id == R.id.button || view.id == R.id.button19) {
-                    backSpace()
-
-                }
+            else -> {
+                State.updateInfixExpression(text)
+                State.calculate()
+                updateScreen()
             }
-            else -> {}
+
+
+        }
+
+        if (view.id == R.id.button || view.id == R.id.button19) {
+            backSpace()
+
         }
     }
 
