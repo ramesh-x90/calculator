@@ -5,15 +5,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.example.calculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var inFixText : TextView
     private lateinit var resText : TextView
+    private lateinit var viewBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
 
         initialize()
 
@@ -23,8 +26,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialize()
     {
-        inFixText = findViewById(R.id.infixExpression)
-        resText = findViewById(R.id.res)
+        inFixText = viewBinding.infixExpression
+        resText = viewBinding.res
 
         updateScreen()
     }
